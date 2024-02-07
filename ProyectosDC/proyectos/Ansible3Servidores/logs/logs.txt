@@ -1,0 +1,25 @@
+morgado.es
+servidor3
+servidor2
+servidor1
+morgado
+morgado
+morgado
+1234
+1234
+1234
+/Users/morgado/Personal/Modulos/HLC/ProyectosDC
+/Users/morgado/Personal/Modulos/HLC/ProyectosDC
+/Users/morgado/Personal/Modulos/HLC/ProyectosDC
+Usuario creado
+Usuario creado
+Usuario creado
+ssh arrancado
+ssh arrancado
+main ejecutada
+main ejecutada
+tail ejecutado
+tail ejecutado
+ssh arrancado
+main ejecutada
+tail ejecutado

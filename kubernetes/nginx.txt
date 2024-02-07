@@ -1,0 +1,51 @@
+Name:             nginx2
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Mon, 15 Jan 2024 10:46:25 +0100
+Labels:           run=nginx2
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.9
+IPs:
+  IP:  10.244.0.9
+Containers:
+  nginx2:
+    Container ID:   docker://5790932dd70c024bd71de7a4033f222ac228fbabcea4b216474367e1be042f0c
+    Image:          morgadoberruezo/nginx:v1
+    Image ID:       docker-pullable://morgadoberruezo/nginx@sha256:c4e8dfdce2fc75803be012ca34f0f73c2e5db8e3027cc6231d39da9f756c9f0f
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Mon, 15 Jan 2024 10:46:41 +0100
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-l6zgc (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-l6zgc:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  10m   default-scheduler  Successfully assigned default/nginx2 to minikube
+  Normal  Pulling    10m   kubelet            Pulling image "morgadoberruezo/nginx:v1"
+  Normal  Pulled     10m   kubelet            Successfully pulled image "morgadoberruezo/nginx:v1" in 14.58s (14.58s including waiting)
+  Normal  Created    10m   kubelet            Created container nginx2
+  Normal  Started    10m   kubelet            Started container nginx2

@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2024-01-15T09:46:25Z"
+  labels:
+    run: nginx2
+  name: nginx2
+  namespace: default
+  resourceVersion: "10286"
+  uid: 3444cac5-c125-48ab-a128-0ffabf470fdf
+spec:
+  containers:
+  - image: morgadoberruezo/nginx:v1
+    imagePullPolicy: IfNotPresent
+    name: nginx2
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-l6zgc
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-l6zgc
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-15T09:46:25Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-17T07:33:41Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-17T07:33:41Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-15T09:46:25Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://ebc50d216f6a205ee4314e451d91fc1f2bcc737787abe8cec2cb3e4fb9d224a1
+    image: morgadoberruezo/nginx:v1
+    imageID: docker-pullable://morgadoberruezo/nginx@sha256:c4e8dfdce2fc75803be012ca34f0f73c2e5db8e3027cc6231d39da9f756c9f0f
+    lastState:
+      terminated:
+        containerID: docker://5790932dd70c024bd71de7a4033f222ac228fbabcea4b216474367e1be042f0c
+        exitCode: 0
+        finishedAt: "2024-01-15T10:51:08Z"
+        reason: Completed
+        startedAt: "2024-01-15T09:46:41Z"
+    name: nginx2
+    ready: true
+    restartCount: 1
+    started: true
+    state:
+      running:
+        startedAt: "2024-01-17T07:33:41Z"
+  hostIP: 192.168.49.2
+  phase: Running
+  podIP: 10.244.0.10
+  podIPs:
+  - ip: 10.244.0.10
+  qosClass: BestEffort
+  startTime: "2024-01-15T09:46:25Z"

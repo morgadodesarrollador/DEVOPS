@@ -1,0 +1,40 @@
+### MANIFIESTO PARA CREAR, DE FORMA DECLARATIVA, EL DEPLY Y EL SERVIUCIO DE UN PROYECTO WEB
+### DEPLOY ####
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webaeropuerto-d
+spec:
+  selector:
+    matchLabels:
+      app: web ## para eu KB acceda a sus objetos mediante los labels
+  replicas: 1
+  template:  #configura los pods/container
+    metadata:
+      labels: # organizar y agrupar los objetos opr etiqetas dentro de un NAMESPACE
+        app: web
+    spec:
+      containers:
+        - name: webaeropuerto
+          image: morgadoberruezo/webaeropuerto:v1
+          ports:
+            - containerPort: 80
+
+# --- marca que indica al kubectl que empezamos a describir OTRO objeto -- >servicio
+---
+### SERVICIO ####
+apiVersion: v1
+kind: Service
+metadata: 
+  name: webaeropuerto-s
+  labels:
+    app: web
+spec: 
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 30004
+      protocol: TCP
+  selector: 
+      app: web
+
